@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Keneilwe!</title>
+  <title>Happy Birthday Keneilwe! 🎂</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&family=Great+Vibes&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800&display=swap');
 
     * {
       box-sizing: border-box;
@@ -18,204 +18,242 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
-      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0 0%, #e8dff5 100%);
+      font-family: 'Nunito', sans-serif;
       overflow: hidden;
-      perspective: 1200px;
+      perspective: 1000px;
     }
 
-    /* Ambient Background Glow Particles */
-    .particle {
+    /* Floating Hearts Background */
+    .floating-heart {
       position: absolute;
-      border-radius: 50%;
-      background: rgba(212, 175, 55, 0.3);
-      animation: floatUp 8s infinite ease-in-out;
+      font-size: 1.5rem;
+      animation: float 6s infinite ease-in-out;
+      opacity: 0.6;
       pointer-events: none;
     }
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
-      50% {
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-      }
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
     }
 
-    /* Card Container */
-    .card-container {
-      width: 380px;
-      height: 520px;
+    /* Card Wrapper */
+    .card-wrapper {
+      width: 340px;
+      height: 480px;
       position: relative;
       transform-style: preserve-3d;
-      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
     }
 
-    .card-container.open {
+    .card-wrapper.open {
       transform: rotateY(-160deg);
     }
 
-    /* Card Surfaces */
-    .card-side {
+    /* Base Card Style */
+    .card-face {
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: 16px;
+      border-radius: 24px;
       backface-visibility: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(255, 154, 162, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      border: 4px solid #fff;
     }
 
     /* Front Cover */
     .card-front {
-      background: linear-gradient(135deg, #2c3e50, #000000);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 30px;
+      background: #ffb7b2;
       z-index: 2;
-    }
-
-    .card-front::before {
-      content: '';
-      position: absolute;
-      inset: 12px;
-      border: 1px dashed rgba(212, 175, 55, 0.4);
-      border-radius: 10px;
-      pointer-events: none;
-    }
-
-    .cover-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
-    }
-
-    .cover-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
-      color: #d4af37;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-
-    .cover-subtitle {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.8rem;
-      color: #ffffff;
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-    }
-
-    .click-hint {
-      position: absolute;
-      bottom: 25px;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.5);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* Inside Right (Main Content) */
-    .card-back {
-      background: #fdfbf7;
-      color: #2c3e50;
-      transform: rotateY(180deg);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 40px 30px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-    }
-
-    .card-back::before {
-      content: '';
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: 10px;
-      pointer-events: none;
-    }
-
-    .inside-header {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.8rem;
-      color: #b8860b;
       text-align: center;
+    }
+
+    .mascot-container {
+      font-size: 5rem;
+      animation: bounce 2s infinite ease-in-out;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.1));
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-15px) scale(1.05); }
+    }
+
+    .front-title {
+      font-family: 'Fredoka One', cursive;
+      color: #fff;
+      font-size: 2.2rem;
+      text-shadow: 3px 3px 0px #ff7b9c;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .name-badge {
+      background: #fff;
+      color: #ff6b8b;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      padding: 6px 20px;
+      border-radius: 50px;
+      box-shadow: 0 5px 0px #ffb3c1;
+      display: inline-block;
+      transform: rotate(-3deg);
+    }
+
+    .tap-hint {
+      position: absolute;
+      bottom: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      color: #ff477e;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* Inside Right */
+    .card-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      text-align: center;
+      justify-content: space-between;
+    }
+
+    .inside-title {
+      font-family: 'Fredoka One', cursive;
+      color: #ff6b8b;
+      font-size: 1.8rem;
       margin-top: 10px;
     }
 
-    .inside-body {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: #4a4a4a;
-      text-align: center;
-      margin: 20px 0;
-      font-weight: 300;
+    .cake-icon {
+      font-size: 3.5rem;
+      margin: 10px 0;
+      animation: wiggle 2s infinite ease-in-out;
     }
 
-    .inside-footer {
-      text-align: center;
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      color: #d4af37;
-      letter-spacing: 1.5px;
-      font-weight: 700;
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
     }
 
-    .accent-symbol {
-      display: block;
-      margin-top: 5px;
-      font-size: 1.1rem;
+    .inside-message {
+      color: #6c5ce7;
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .treat-decor {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    /* Simple Confetti Canvas */
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
 
-  <div class="particle" style="width: 8px; height: 8px; left: 15%; animation-duration: 7s; animation-delay: 0s;"></div>
-  <div class="particle" style="width: 12px; height: 12px; left: 35%; animation-duration: 9s; animation-delay: 2s;"></div>
-  <div class="particle" style="width: 6px; height: 6px; left: 70%; animation-duration: 6s; animation-delay: 1s;"></div>
-  <div class="particle" style="width: 10px; height: 10px; left: 85%; animation-duration: 10s; animation-delay: 3s;"></div>
+  <div class="floating-heart" style="left: 10%; animation-delay: 0s;">💖</div>
+  <div class="floating-heart" style="left: 25%; animation-delay: 2s;">🌸</div>
+  <div class="floating-heart" style="left: 70%; animation-delay: 1s;">✨</div>
+  <div class="floating-heart" style="left: 85%; animation-delay: 3s;">🎀</div>
 
-  <div class="card-container" id="card" onclick="toggleCard()">
+  <canvas id="confetti"></canvas>
+
+  <div class="card-wrapper" id="card" onclick="openCard()">
     
-    <div class="card-side card-front">
-      <div class="cover-icon">✨</div>
-      <div class="cover-title">Celebrating</div>
-      <div class="cover-subtitle">Keneilwe</div>
-      <div class="click-hint">Click to Open</div>
+    <div class="card-face card-front">
+      <div class="mascot-container">🐻🎉</div>
+      <div class="front-title">HAPPY<br>BIRTHDAY</div>
+      <div class="name-badge">Keneilwe!</div>
+      <div class="tap-hint">Tap to open 🎁</div>
     </div>
 
-    <div class="card-side card-back">
-      <div class="inside-header">Happy Birthday!</div>
+    <div class="card-face card-back">
+      <div class="inside-title">Yay, It's Your Day! 🎉</div>
       
-      <p class="inside-body">
-        Wishing you a day filled with laughter, joy, and unforgettable moments. 
-        May this year bring incredible opportunities, genuine happiness, 
-        and all the success you deserve. 
+      <div class="cake-icon">🎂</div>
+
+      <p class="inside-message">
+        Wishing you the absolute happiest birthday full of sweet treats, big smiles, and tons of fun! <br><br>
+        Hope your year ahead is as amazing and sweet as you are! 💖
       </p>
 
-      <div class="inside-footer">
-        CHEERS TO YOU
-        <span class="accent-symbol">✦</span>
-      </div>
+      <div class="treat-decor">🎈 🎁 🍓 🍰 ✨</div>
     </div>
 
   </div>
 
   <script>
-    function toggleCard() {
+    let opened = false;
+
+    function openCard() {
       const card = document.getElementById('card');
       card.classList.toggle('open');
+      
+      if (!opened) {
+        popConfetti();
+        opened = true;
+      }
+    }
+
+    // Mini Cute Confetti Effect
+    function popConfetti() {
+      const canvas = document.getElementById('confetti');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const pieces = [];
+      const colors = ['#ff7b9c', '#ffb7b2', '#ffda79', '#a29bfe', '#74b9ff'];
+
+      for (let i = 0; i < 60; i++) {
+        pieces.push({
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.5) * 12 - 4,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.2; // gravity
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        if (pieces.some(p => p.y < canvas.height)) {
+          requestAnimationFrame(animate);
+        }
+      }
+      animate();
     }
   </script>
 </body>
